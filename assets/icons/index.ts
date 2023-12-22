@@ -1,0 +1,17 @@
+export { default as close } from "./close.svg";
+export { default as logo } from "./logo.svg";
+export { default as addSquare } from "./add-square.svg";
+export { default as css } from "./css.svg";
+export { default as figma } from "./figma.svg";
+export { default as github } from "./github.svg";
+export { default as npm } from "./npm.svg";
+export { default as svg } from "./svg.svg";
+export { default as search } from "./search.svg";
+export { default as githubFill } from "./github-fill.svg";
+export { default as downArrow } from "./down-arrow.svg";
+export { default as twitter } from "./twitter.svg";
+export { default as dribbble } from "./dribbble.svg";
+export { default as instagram } from "./instagram.svg";
+export { default as copy } from "./copy.svg";
+export { default as linkedin } from "./linkedin.svg";
+export { default as download } from "./download.svg";
