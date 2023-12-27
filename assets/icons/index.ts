@@ -15,3 +15,4 @@ export { default as instagram } from "./instagram.svg";
 export { default as copy } from "./copy.svg";
 export { default as linkedin } from "./linkedin.svg";
 export { default as download } from "./download.svg";
+export { default as ellipsisV } from "./ellipsis-v.svg";

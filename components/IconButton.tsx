@@ -42,7 +42,7 @@ export default function IconButton({
     const svg = (iconRef.current?.firstChild as SVGAElement).outerHTML;
 
     navigator.clipboard.writeText(svg);
-    toast("SVg Copied", {
+    toast("Svg Copied", {
       position: "bottom-center",
       style: { background: "#304254", color: "#F0F5F9" },
     });
@@ -114,12 +114,12 @@ hover:bg-grey-100 hover:cursor-pointer"
                 </button>
               </Dialog.Close>
               <div
-                className={`py-10 pl-10 pr-[2.75rem] items-center w-full flex flex-col justify-center gap-8
+                className={`py-10 pl-10 pr-[2.75rem] items-center w-full flex flex-col justify-center gap-8 overflow-y-scroll
                 md:flex-row`}
               >
                 <span
                   ref={iconRef}
-                  className="p-[4.75rem] rounded-[2rem] bg-grey-100 flex items-center justify-center
+                  className="p-12 md:p-[4.75rem] rounded-[2rem] bg-grey-100 flex items-center justify-center
                   md:h-60"
                 >
                   <IconComponent size={width < 768 ? 40 : 162} />
@@ -133,7 +133,7 @@ hover:bg-grey-100 hover:cursor-pointer"
                     {name}
                   </p>
                   <span
-                    className="flex flex-wrap gap-3 items-center border border-grey-300 w-fit  rounded-xl
+                    className="flex gap-3 items-center border border-grey-300 w-fit  rounded-xl
                     text-base font-semibold text-grey-700 -tracking-[0.02rem]  md:flex-nowrap"
                   >
                     <button
@@ -147,7 +147,7 @@ hover:bg-grey-100 hover:cursor-pointer"
                         height={24}
                         className="w-6 h-6"
                       />
-                      Download Svg
+                      {width > 768 ? "Download Svg" : ""}
                     </button>
                     <button
                       onClick={handleCopySvg}
@@ -160,13 +160,13 @@ hover:bg-grey-100 hover:cursor-pointer"
                         height={24}
                         className="w-6 h-6"
                       />
-                      Copy Svg
+                      {width > 768 ? "Copy Svg" : ""}
                     </button>
                     <span
                       // onClick={(value) => handleDownloadpng(value, 24)}
                       className=" py-3 pr-4 flex items-center gap-2 hover:bg-grey-100 border-none outline-none"
                     >
-                      Download Png
+                      {width > 768 ? "Download Png" : ""}
                       <Select.Root onValueChange={handleDownloadpng}>
                         <Select.Trigger asChild className="">
                           {/* <button

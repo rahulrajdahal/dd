@@ -6,7 +6,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useWindowSize } from "@/hooks";
 import Image from "next/image";
-import { close, githubFill, search } from "@/assets/icons";
+import { close, ellipsisV, githubFill, search } from "@/assets/icons";
 import { Logo } from ".";
 import styled from "styled-components";
 
@@ -97,18 +97,25 @@ export default function Navbar({ position, ...props }: Readonly<INavbar>) {
 
     return (
       <>
-        {/* <EllipsisV
-          className="hover:cursor-pointer"
+        <Image
+          src={ellipsisV}
+          alt="menu"
           onClick={() => {
             setIsOpen(() => true);
           }}
-        /> */}
+          width={20}
+          height={10}
+          className="w-5 h-5"
+        />
 
         {isOpen ? (
           <div className="px-4 py-3 z-10 animate_hamburger_menu fixed top-0 bottom-0 left-0 right-0 bg-white">
             <span className="inline-flex items-center w-full justify-between">
-              {/* <Logo /> */}
-              <motion.div whileHover={{ rotate: 90 }}>
+              <Logo />
+              <motion.button
+                onClick={() => setIsOpen(false)}
+                whileHover={{ rotate: 90 }}
+              >
                 <Image
                   width={24}
                   height={24}
@@ -116,14 +123,7 @@ export default function Navbar({ position, ...props }: Readonly<INavbar>) {
                   alt="close"
                   className="w-6 h-6"
                 />
-
-                {/* <Close
-                  className="hover:cursor-pointer"
-                  onClick={() => {
-                    setIsOpen(() => false);
-                  }}
-                /> */}
-              </motion.div>
+              </motion.button>
             </span>
 
             <motion.ul
@@ -134,7 +134,13 @@ export default function Navbar({ position, ...props }: Readonly<INavbar>) {
               className="flex flex-col items-center gap-6 mt-12"
             >
               {links.map(({ link, id }) => (
-                <motion.li key={id} variants={linkVariants}>
+                <motion.li
+                  key={id}
+                  onClick={() => {
+                    setIsOpen(() => false);
+                  }}
+                  variants={linkVariants}
+                >
                   {id !== 4 ? (
                     <p className="font-medium inline-flex items-center gap-[5px] text-lg text-grey-700">
                       {link}

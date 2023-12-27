@@ -3,7 +3,7 @@ import {
   Icons,
   Tags,
   filterCategories,
-  filterTags,
+  
 } from "@/utils/helpers";
 import { useSearchParams } from "next/navigation";
 import React from "react";

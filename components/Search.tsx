@@ -67,7 +67,7 @@ export default function Search() {
      mt-[101px] md:h-[60px]
      md:px-[12.5%]`}
     >
-      <div className="flex items-center w-full border-x border-x-grey-300 h-full px-[21px]">
+      <div className="flex flex-col md:flex-row items-center w-full border-x border-x-grey-300 h-full px-[21px]">
         <span className="inline-flex items-center gap-2 w-full sm:border-none border-b border-b-grey-300">
           <Image
             src={search}
