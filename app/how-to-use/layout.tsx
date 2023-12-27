@@ -14,7 +14,7 @@ const menus = [
   {
     id: 1,
     title: "FOR DESIGNERS",
-    links: [{ id: 1, link: "Figma", to: `${routes.howToUse}/${routes.figma}` }],
+    links: [{ id: 1, link: "Figma", to: `/${routes.howToUse}/${routes.figma}` }],
   },
   {
     id: 2,
