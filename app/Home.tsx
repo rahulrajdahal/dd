@@ -11,6 +11,7 @@ import { createMeistericon } from "@/utils/createMeistericon";
 import { IconNode, Tags } from "@/utils/helpers";
 import { useIcons } from "@/hooks";
 import Icons, { IIcons } from "./Icons";
+import IconsLoading from "@/components/loading/IconsLoading";
 
 const gradient = keyframes` 
  0% {
@@ -196,7 +197,9 @@ export default function Home({
         ))}
       </motion.div>
       <Search />
-      <Icons icons={mnicons} />
+      <React.Suspense fallback={<IconsLoading />}>
+        <Icons icons={mnicons} />
+      </React.Suspense>
     </div>
   );
 }
