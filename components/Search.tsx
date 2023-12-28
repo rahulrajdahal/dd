@@ -8,6 +8,7 @@ import { DebouncedInput } from ".";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import * as Select from "@radix-ui/react-select";
 import { motion } from "framer-motion";
+import { event } from "@/utils/gtag";
 
 const searchVariants = {
   hidden: {
@@ -63,7 +64,7 @@ export default function Search() {
       initial="hidden"
       animate="visible"
       variants={searchVariants}
-      className={`w-full border flex items-center justify-between border-grey-300 rounded-lg bg-white 
+      className={`w-full border z-10 sticky top-0 flex items-center justify-between border-grey-300 rounded-lg bg-white 
      mt-[101px] md:h-[60px]
      md:px-[12.5%]`}
     >
@@ -88,9 +89,16 @@ export default function Search() {
                   params.delete("category");
                 }
                 params.set("q", value as string);
+                event({
+                  action: "icons searched",
+                  category: "Search",
+                  label: "Search icons",
+                  value: value as string,
+                });
               } else {
                 params.delete("q");
               }
+
               router.push(`${pathname}?${params}`);
             }}
             className=" w-full h-full outline-none"
@@ -112,7 +120,12 @@ export default function Search() {
             aria-label="All"
             onClick={() => {
               const params = new URLSearchParams(searchParams);
-
+              event({
+                action: "icons type clicked",
+                category: "icons type",
+                label: "Icon type all",
+                value: "all",
+              });
               params.delete("type");
               router.push(`${pathname}?${params}`);
             }}
@@ -130,6 +143,12 @@ export default function Search() {
             onClick={() => {
               const params = new URLSearchParams(searchParams);
               params.set("type", "linear");
+              event({
+                action: "icons type clicked",
+                category: "icons type",
+                label: "Icon type linear",
+                value: "linear",
+              });
               router.push(`${pathname}?${params}`);
             }}
           >
@@ -146,6 +165,12 @@ export default function Search() {
             onClick={() => {
               const params = new URLSearchParams(searchParams);
 
+              event({
+                action: "icons type clicked",
+                category: "icons type",
+                label: "Icon type bold",
+                value: "bold",
+              });
               params.set("type", "bold");
               router.push(`${pathname}?${params}`);
             }}
@@ -173,6 +198,13 @@ export default function Search() {
             if (query) {
               params.delete("q");
             }
+
+            event({
+              action: `${value} Category clicked`,
+              category: "Category",
+              label: `${value} category`,
+              value,
+            });
             router.push(`${pathname}?${params}`);
           }
         }}

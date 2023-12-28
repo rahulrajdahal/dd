@@ -9,6 +9,7 @@ import Image from "next/image";
 import { close, ellipsisV, githubFill, search } from "@/assets/icons";
 import { Logo } from ".";
 import styled from "styled-components";
+import { event } from "@/utils/gtag";
 
 interface INavbar extends React.ComponentPropsWithoutRef<"div"> {
   position?: string;
@@ -109,7 +110,7 @@ export default function Navbar({ position, ...props }: Readonly<INavbar>) {
         />
 
         {isOpen ? (
-          <div className="px-4 py-3 z-10 animate_hamburger_menu fixed top-0 bottom-0 left-0 right-0 bg-white">
+          <div className="px-4 py-3 z-50 animate_hamburger_menu fixed top-0 bottom-0 left-0 right-0 bg-white">
             <span className="inline-flex items-center w-full justify-between">
               <Logo />
               <motion.button
@@ -138,6 +139,31 @@ export default function Navbar({ position, ...props }: Readonly<INavbar>) {
                   key={id}
                   onClick={() => {
                     setIsOpen(() => false);
+                    let value = "Icons";
+
+                    switch (id) {
+                      case 2:
+                        value = "how to use";
+                        break;
+
+                      case 3:
+                        value = "Sponsor";
+                        break;
+
+                      case 4:
+                        value = "start here";
+                        break;
+
+                      default:
+                        break;
+                    }
+
+                    event({
+                      action: "icons clicked",
+                      category: "Navbar",
+                      label: "Navlink",
+                      value,
+                    });
                   }}
                   variants={linkVariants}
                 >
@@ -176,7 +202,7 @@ export default function Navbar({ position, ...props }: Readonly<INavbar>) {
       animate="visible"
       initial="hidden"
       variants={navVariants}
-      className={`${props.className} max-h-[3.75rem] bg-white z-10 w-full h-full inline-flex items-center justify-between px-[4%] py-3 md:py-7 md:px-[12.5%]`}
+      className={`${props.className} sticky top-0 max-h-[3.75rem] bg-white z-10 w-full h-full inline-flex items-center justify-between px-[4%] py-3 md:py-7 md:px-[12.5%]`}
     >
       <Logo />
 
@@ -187,7 +213,36 @@ export default function Navbar({ position, ...props }: Readonly<INavbar>) {
 const renderLinks = () => (
   <ul className="inline-flex w-full items-center justify-end gap-[74px]">
     {links.map(({ link, id }) => (
-      <li key={id}>
+      <li
+        key={id}
+        onClick={() => {
+          let value = "Icons";
+
+          switch (id) {
+            case 2:
+              value = "how to use";
+              break;
+
+            case 3:
+              value = "Sponsor";
+              break;
+
+            case 4:
+              value = "start here";
+              break;
+
+            default:
+              break;
+          }
+
+          event({
+            action: "icons clicked",
+            category: "Navbar",
+            label: "Navlink",
+            value,
+          });
+        }}
+      >
         {id !== 4 ? (
           <p className="font-medium inline-flex items-center gap-[5px] text-lg text-grey-700">
             {link}

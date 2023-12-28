@@ -5,6 +5,7 @@ import { Navbar } from "@/components";
 import StyledComponentsRegistry from "@/utils/styledComponentsRegistry";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const inter = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: Readonly<IRootLayout>) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <GoogleAnalytics />
         <StyledComponentsRegistry>
           <Navbar />
           {children}

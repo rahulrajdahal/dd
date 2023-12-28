@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { routes } from "@/utils/routes";
 import Link from "next/link";
 import { dribbble, twitter, linkedin, instagram, logo } from "@/assets/icons";
+import { event } from "@/utils/gtag";
 
 const socials = [
   { id: 1, icon: dribbble },
@@ -115,6 +116,46 @@ export default function Footer() {
                 id === 7 || id === 8 ? "md:mt-[83px]" : ""
               } font-normal text-grey-100 text-sm
             md:text-base`}
+              onClick={() => {
+                let value = "All Icons";
+
+                switch (id) {
+                  case 2:
+                    value = "github";
+                    break;
+
+                  case 3:
+                    value = "how to use";
+                    break;
+
+                  case 4:
+                    value = "figma plugin";
+                    break;
+
+                  case 5:
+                    value = "Sponsor";
+                    break;
+                  case 6:
+                    value = "svg pack";
+                    break;
+
+                  case 7:
+                    value = "terms of use";
+                    break;
+                  case 4:
+                    value = "privacy policy";
+                    break;
+                  default:
+                    break;
+                }
+
+                event({
+                  action: "footer links clicked",
+                  category: "Footer Links",
+                  label: `${value} link`,
+                  value,
+                });
+              }}
             >
               {link}
             </li>

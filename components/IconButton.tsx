@@ -10,6 +10,7 @@ import Image from "next/image";
 import { createMeistericon } from "@/utils/createMeistericon";
 import toast from "react-hot-toast";
 import * as Select from "@radix-ui/react-select";
+import { event } from "@/utils/gtag";
 
 interface IIconButton {
   name: string;
@@ -36,6 +37,12 @@ export default function IconButton({
       position: "bottom-center",
       style: { background: "#304254", color: "#F0F5F9" },
     });
+    event({
+      action: "icon code copy",
+      category: "Code Copy",
+      label: `${name} code copied`,
+      value: name,
+    });
   };
 
   const handleCopySvg = () => {
@@ -45,6 +52,12 @@ export default function IconButton({
     toast("Svg Copied", {
       position: "bottom-center",
       style: { background: "#304254", color: "#F0F5F9" },
+    });
+    event({
+      action: "icon copied",
+      category: "Svg Copy",
+      label: `${name} svg copied`,
+      value: name,
     });
   };
 
@@ -63,8 +76,13 @@ export default function IconButton({
     a.download = `${name}.png`;
     a.target = "_blank";
     a.href = blobUrl;
-
     a.click();
+    event({
+      action: "icons downloaded",
+      category: "SVG Download",
+      label: `${name} svg download`,
+      value: name,
+    });
     svgElement.removeAttribute("width");
     svgElement.removeAttribute("height");
   };
@@ -78,6 +96,12 @@ export default function IconButton({
     link.download = `${name}.svg`;
     document.body.appendChild(link);
     link.click();
+    event({
+      action: "icons downloaded",
+      category: "PNG Download",
+      label: `${name} download`,
+      value: name,
+    });
     document.body.removeChild(link);
   };
   return (
@@ -89,6 +113,14 @@ export default function IconButton({
               <button
                 type="button"
                 title={name}
+                onClick={() => {
+                  event({
+                    action: `${name} Icon clicked`,
+                    category: "Icons",
+                    label: `${name} icon`,
+                    value: name,
+                  });
+                }}
                 className="p-5 rounded-[20px]
 hover:bg-grey-100 hover:cursor-pointer"
               >
