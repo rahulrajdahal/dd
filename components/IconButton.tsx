@@ -146,7 +146,7 @@ hover:bg-grey-100 hover:cursor-pointer"
                 </button>
               </Dialog.Close>
               <div
-                className={`py-10 pl-10 pr-[2.75rem] items-center w-full flex flex-col justify-center gap-8 overflow-y-scroll
+                className={`py-10 pl-10 pr-[2.75rem] items-center w-full flex flex-col justify-center gap-8
                 md:flex-row`}
               >
                 <span

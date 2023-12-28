@@ -102,13 +102,12 @@ export default function Logo() {
             <Dialog.Overlay className="fixed inset-0 bg-black/30" />
             <Dialog.Content
               asChild
-              className="z-10 absolute top-[15rem] md:left-[25%] shadow-lg rounded-[2.5rem] max-w-[62.5rem] w-full  min-h-[59.75rem] h-full overflow-y-scroll bg-white p-10"
+              className="z-10 absolute top-[15rem] md:left-[25%] shadow-lg rounded-[2.5rem] max-w-[62.5rem] w-full  min-h-[59.75rem] h-full bg-white p-10"
             >
               <motion.div
                 animate="visible"
                 initial="hidden"
                 variants={contentVariants}
-                className='overflow-y-scroll'
               >
                 <div className="flex justify-between items-center mb-6 ">
                   <Dialog.Title
