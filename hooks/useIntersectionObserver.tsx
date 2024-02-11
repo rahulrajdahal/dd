@@ -2,7 +2,7 @@ import React from "react";
 
 export default function useIntersectionObserver(
   ref: React.MutableRefObject<HTMLSpanElement | null>,
-  options: IntersectionObserverInit | undefined
+  options?: IntersectionObserverInit | undefined
 ) {
   const [isIntersecting, setIsIntersecting] = React.useState(false);
 

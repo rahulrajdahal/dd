@@ -1,21 +1,21 @@
 "use client";
 
-import React from "react";
-import * as Tooltip from "@radix-ui/react-tooltip";
-import * as Dialog from "@radix-ui/react-dialog";
-import { Icons } from "@/utils/helpers";
-import { useWindowSize } from "@/hooks";
 import { copy, downArrow, download } from "@/assets/icons";
-import Image from "next/image";
+import { useWindowSize } from "@/hooks";
 import { createMeistericon } from "@/utils/createMeistericon";
-import toast from "react-hot-toast";
-import * as Select from "@radix-ui/react-select";
 import { event } from "@/utils/gtag";
+import { IconNode } from "@/utils/helpers";
+import * as Dialog from "@radix-ui/react-dialog";
+import * as Select from "@radix-ui/react-select";
+import * as Tooltip from "@radix-ui/react-tooltip";
+import Image from "next/image";
+import React from "react";
+import toast from "react-hot-toast";
 
 interface IIconButton {
   name: string;
   component: React.FC<any>;
-  icons?: Icons;
+  icons?: [string, unknown][];
 }
 export default function IconButton({
   icons,
@@ -130,9 +130,9 @@ hover:bg-grey-100 hover:cursor-pointer"
           </Dialog.Trigger>
 
           <Dialog.Portal>
-            <Dialog.Overlay className="fixed inset-0 bg-black/30" />
+            <Dialog.Overlay className="fixed inset-0 bg-black/30 z-50" />
             <Dialog.Content
-              className="data-[state=open]:animate-contentShow 
+              className="data-[state=open]:animate-contentShow  z-50
               w-full max-w-[62.5rem] rounded-[2.5rem] bg-white p-6 text-left align-middle shadow-xl transition-all min-h-[90vh] h-full
               fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-30%]  focus:outline-none"
             >
@@ -283,7 +283,7 @@ hover:bg-grey-100 hover:cursor-pointer"
   );
 }
 
-type IRelatedIcons = { icons: Icons; name: string };
+type IRelatedIcons = { icons: [string, unknown][]; name: string };
 const RelatedIcons = ({ icons, name }: IRelatedIcons) => {
   return (
     <>
@@ -295,7 +295,7 @@ const RelatedIcons = ({ icons, name }: IRelatedIcons) => {
           <IconButton
             key={name}
             name={name}
-            component={createMeistericon(name, iconNode)}
+            component={createMeistericon(name, iconNode as IconNode[])}
             icons={icons}
           />
         ))}

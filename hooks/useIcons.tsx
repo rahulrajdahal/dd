@@ -1,7 +1,6 @@
-import React from "react";
-import { useCategory, useIconType, useSearch } from ".";
 import { IconNode, Icons, Tags } from "@/utils/helpers";
 import { useSearchParams } from "next/navigation";
+import React from "react";
 
 export default function useIcons(
   iconsNodes: IconNode[],
@@ -18,20 +17,23 @@ export default function useIcons(
     return [];
   }, [iconsNodes]) as unknown as Icons;
 
-  const { icons: searchIcons } = useSearch(icons.slice(0, limit), tags);
-  const { icons: categoryIcons } = useCategory(
-    icons.slice(0, limit),
-    categories
-  );
+  return iconsNodes;
+  // console.log(icons, "icons");
 
-  const fetchIcons = React.useMemo(() => {
-    if (searchParams.get("category")) {
-      return categoryIcons;
-    }
-    return searchIcons;
-  }, [categoryIcons, searchIcons, searchParams]);
+  // const { icons: searchIcons } = useSearch(icons.slice(0, limit), tags);
+  // const { icons: categoryIcons } = useCategory(
+  //   icons.slice(0, limit),
+  //   categories
+  // );
 
-  const { icons: typeIcons } = useIconType(fetchIcons);
+  // const fetchIcons = React.useMemo(() => {
+  //   if (searchParams.get("category")) {
+  //     return categoryIcons;
+  //   }
+  //   return searchIcons;
+  // }, [categoryIcons, searchIcons, searchParams]);
 
-  return typeIcons;
+  // const { icons: typeIcons } = useIconType(fetchIcons);
+
+  // return typeIcons;
 }

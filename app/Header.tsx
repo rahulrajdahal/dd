@@ -1,9 +1,8 @@
-import React from "react";
-import { motion } from "framer-motion";
-import styled, { keyframes } from "styled-components";
 import { css, figma, github, npm, svg } from "@/assets/icons";
-import Link from "next/link";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import styled, { keyframes } from "styled-components";
 
 const gradient = keyframes` 
  0% {
@@ -137,7 +136,7 @@ export default function Header() {
         initial="hidden"
         animate="visible"
         variants={iconsAddedVariants}
-        className="px-6 py-3 bg-white rounded-lg text-base leading-4 text-grey-800 font-medium"
+        className="px-6 py-3 -z-10 bg-white rounded-lg text-base leading-4 text-grey-800 font-medium"
       >
         🎁 +999 icons added
       </IconsAdded>

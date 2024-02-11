@@ -1,9 +1,8 @@
 import { IconButton } from "@/components";
-import React from "react";
-import { motion } from "framer-motion";
 import { createMeistericon } from "@/utils/createMeistericon";
-import { Icons } from "@/utils/helpers";
-import useIntersectionObserver from "@/hooks/useIntersectionObserver";
+import { IconNode } from "@/utils/helpers";
+import { motion } from "framer-motion";
+import React from "react";
 
 const containerVariants = {
   hidden: {
@@ -18,7 +17,7 @@ const containerVariants = {
 };
 
 export type IIcons = {
-  icons: Icons;
+  icons: [string, unknown][];
 };
 export default React.memo(function Iconss({ icons }: Readonly<IIcons>) {
   return (
@@ -31,11 +30,11 @@ export default React.memo(function Iconss({ icons }: Readonly<IIcons>) {
       lg:grid-cols-10
       2xl:px-[14.79%] `}
     >
-      {icons.map(([name, iconNode]) => (
+      {icons?.map(([name, iconNode]) => (
         <IconButton
           key={name}
           name={name}
-          component={createMeistericon(name, iconNode)}
+          component={createMeistericon(name, iconNode as IconNode[])}
           icons={icons}
         />
       ))}

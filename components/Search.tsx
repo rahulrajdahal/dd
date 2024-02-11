@@ -1,14 +1,13 @@
 "use client";
 
-import React from "react";
-import * as ToggleGroup from "@radix-ui/react-toggle-group";
-import Image from "next/image";
 import { downArrow, search } from "@/assets/icons";
-import { DebouncedInput } from ".";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import * as Select from "@radix-ui/react-select";
-import { motion } from "framer-motion";
 import { event } from "@/utils/gtag";
+import * as Select from "@radix-ui/react-select";
+import * as ToggleGroup from "@radix-ui/react-toggle-group";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { DebouncedInput } from ".";
 
 const searchVariants = {
   hidden: {
